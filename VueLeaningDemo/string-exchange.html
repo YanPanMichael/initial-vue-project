@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>String Loop Demo</title>
+  <script crossorigin="anonymous" src="https://lib.baomitu.com/vue/2.5.21/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p>{{msg}}</p>
+    <input type="button" value="start loop" @click="startLoop">
+    <input type="button" value="stop loop" @click="stopLoop">
+  </div>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        msg: "welcome to here! ",
+        intervalRef: null
+      },
+      methods: {
+        startLoop() {
+          if (this.intervalRef !== null) return;
+          this.intervalRef = setInterval(() => {
+            const firstLetter = this.msg.substring(0, 1);
+            const lestString = this.msg.substring(1);
+            this.msg = lestString + firstLetter;
+          }, 200);
+        },
+        stopLoop(){
+          clearInterval(this.intervalRef);
+          this.intervalRef = null;
+        }
+      }
+    })
+  </script>  
+</body>
+</html>
