@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Event Demo</title>
+  <script crossorigin="anonymous" src="https://lib.baomitu.com/vue/2.5.21/vue.js"></script>
+  <style>
+      .outer {
+        background-color: green;
+        padding: 20px;
+      }
+      .middle {
+        background-color: yellow;
+        padding: 20px;
+      }
+    </style>
+</head>
+<body>
+  <div id="app">
+    <div class="outer" @click.capture="handleOuterclick">
+      <div class="middle" @click.self.stop="handleMiddleclick">
+
+        <input type="button" value="button" title="normal button" @click="handleclick">
+        <!-- stopPropagation(); -->
+        <input type="button" value="button" title="innter button" @click.stop="handleclick">
+        <!-- stopPropagation() for once -->
+        <input type="button" value="innter once button" title="innter once button" @click.stop.once="handleclick">
+        <!-- preventDefault(); -->
+        <a href="http://www.baidu.com" @click.prevent="handleLink">link</a> 
+      </div>
+    </div>
+  </div>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        msg: "welcome to here! ",
+        intervalRef: null
+      },
+      methods: {
+        handleclick() {
+          console.log("button click");
+        },
+        handleMiddleclick() {
+          console.log("middle click");
+        },
+        handleOuterclick() {
+          console.log("outer click");
+        },
+        handleLink() {
+          console.log("inner a click");
+        }
+      },
+    })
+  </script>  
+</body>
+</html>
