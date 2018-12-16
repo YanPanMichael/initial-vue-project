@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Event Demo</title>
+  <script crossorigin="anonymous" src="https://lib.baomitu.com/vue/2.5.21/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div>{{msg}}</div>
+    <!-- v-model="something"属性实现 表单元素和 MVVM中Model中数据的双向绑定 v-model只能用在表单元素中
+    input(radio, text, address, email ...) select checkbox textarea ... -->
+    <input type="text" v-model="msg">
+    <br>
+    <section>
+      <input type="text" v-model="num1">
+      <select name="opt selection" v-model="opt">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+      </select>
+      <input type="text" v-model="num2">
+      <span> = </span>
+      <input type="text" :value="result">
+      <span> = {{result}}</span>
+    </section>
+  </div>
+  <script>
+    const v1 = new Vue({
+      el: "#app",
+      data: {
+        msg: "Input here! ",
+        num1: 0,
+        num2: 0,
+        opt: "+",
+      },
+      computed: {
+        result() {
+          return eval("parseInt(this.num1)" + this.opt + "parseInt(this.num2)")
+        }
+      },
+    })
+  </script>  
+</body>
+</html>
