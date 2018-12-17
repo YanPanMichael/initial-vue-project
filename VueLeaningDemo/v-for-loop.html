@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue Tag Learning</title>
+  <script crossorigin="anonymous" src="https://lib.baomitu.com/vue/2.5.21/vue.js"></script>
+</head>
+<body>
+  <div id="demo">
+    <p v-for="(item, index) in source1" :key="index">index: {{index}} --- item: {{item}}</p>
+    <br>
+    <p v-for="(item, index) in source2" :key="index">id: {{item.id}} --- name: {{item.name}}</p>
+    <br>
+    <p v-for="(val, key, i) in source3" :key="key">key: {{key}} --- value: {{val}} --- index: {{i}}</p>
+    <br>
+    <p v-for="(ele, i) in 10" :key="ele">loop: {{ele}} --- index: {{i}}</p>
+  </div>
+  <script type="text/javascript">
+    var app=new Vue({
+      el:'#demo',
+      data:{
+        source1: [1,2,3,4,6,5],
+        source2: [{id:1, name:'a'},{id:2, name: 'v'}],
+        source3: {id:1, name:'a', general: 'M'}
+      }
+    });
+  </script>
+</body>
+</html>
