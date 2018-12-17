@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue Tag Learning</title>
+  <script crossorigin="anonymous" src="https://lib.baomitu.com/vue/2.5.21/vue.js"></script>
+  <style>
+			.red {
+        color: red;
+      }
+			.italic {
+        font-style: italic
+      }
+			.space {
+        letter-spacing: 0.5em
+      }
+  </style>
+</head>
+<body>
+  <div id="demo">
+    <h3 class="red italic">hahaha test for it</h3>
+    <h3 :class="['red', 'space', {'italic': flag}]">hahaha test for it</h3>
+    <h3 :class="{red: true, italic: false, space: true}">hahaha test for it</h3>
+    <h3 :class="obj">hahaha test for it</h3>
+  </div>
+  <script type="text/javascript">
+    var app=new Vue({
+      el:'#demo',
+      data:{
+        flag: true,
+        obj: {red: true, italic: false, space: true}
+      }
+    });
+  </script>
+</body>
+</html>
