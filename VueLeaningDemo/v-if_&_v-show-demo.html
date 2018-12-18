@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue Tag Learning</title>
+  <script crossorigin="anonymous" src="https://lib.baomitu.com/vue/2.5.21/vue.js"></script>
+</head>
+<body>
+  <div id="demo">
+    <p v-if="flag">v-if text</p>
+    <p v-show="flag">v-show text</p>
+    <input type="button" value="change flage value" @click="flag=!flag">
+  </div>
+  <script type="text/javascript">
+    var app=new Vue({
+      el:'#demo',
+      data:{
+        flag: true
+      }
+    });
+  </script>
+</body>
+</html>
