@@ -78,6 +78,12 @@
           // })
           // this.list.splice(matIndex, 1);
           //method2
+          this.list.some((ele, index) => {
+            if (ele.id === id) {
+              this.list.splice(index, 1);
+              return true;
+            }
+          })
         }
       },
     })
