@@ -9,13 +9,13 @@
 </head>
 <body>
   <div id="demo">
-    <p>{{msg | replaceFilter | tailFilter}}</p>
+    <p>{{msg | replaceFilter('tiger') | tailFilter}}</p>
   </div>
   <script type="text/javascript">
 
     Vue.filter('replaceFilter',
-      function(data) {
-        return data.replace(/rabbit/g, 'tiger');
+      function(data, input1) {
+        return data.replace(/rabbit/g, input1);
       }
     )
 
