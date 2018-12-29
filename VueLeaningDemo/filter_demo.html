@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue filter demo</title>
+  <script src="./vue_2_5_21.min.js"></script>
+</head>
+<body>
+  <div id="demo">
+    <p>{{msg | replaceFilter | tailFilter}}</p>
+  </div>
+  <script type="text/javascript">
+
+    Vue.filter('replaceFilter',
+      function(data) {
+        return data.replace(/rabbit/g, 'tiger');
+      }
+    )
+
+    Vue.filter('tailFilter',
+      function(data) {
+        return data + ', Hahahahaha!';
+      }
+    )
+
+    new Vue({
+      el:'#demo',
+      data:{
+        msg: 'This is the rabbit demo which I want to test rabbit family, rabbit boy and rabbit girl'
+      }
+    });
+  </script>
+</body>
+</html>
