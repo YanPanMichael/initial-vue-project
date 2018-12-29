@@ -9,13 +9,13 @@
 </head>
 <body>
   <div id="demo">
-    <p>{{msg | replaceFilter('tiger') | tailFilter}}</p>
+    <p>{{msg | replaceFilter('rabbit','tiger') | tailFilter}}</p>
   </div>
   <script type="text/javascript">
 
     Vue.filter('replaceFilter',
-      function(data, input1) {
-        return data.replace(/rabbit/g, input1);
+      function(data, scource, target) {
+        return data.replace(new RegExp(scource, "gi"), target);
       }
     )
 
