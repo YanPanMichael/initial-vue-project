@@ -19,7 +19,7 @@
               <input type="text" name="id" id="carId" class="form-control" placeholder="car id" aria-describedby="helpId" v-model="id">
             </label>
             <label for="carName">Name:
-              <input type="text" name="name" id="carName" class="form-control" placeholder="car name" aria-describedby="helpId" v-model="name">
+              <input type="text" name="name" id="carName" class="form-control" placeholder="car name" aria-describedby="helpId" v-model="name" @keyup.enter="addCar" @keydown.F2="addCar">
             </label>
             <button type="button" class="btn btn-primary mr-3" @click="addCar">Add</button>
             <label for="carSearch">Search text:
@@ -70,6 +70,8 @@
         return `${yy}-${MM}-${dd} ${hh}:${mm}:${ss}`
       }
     })
+
+    Vue.config.keyCodes.F2 = 113;
 
     new Vue({
       el: "#root",
