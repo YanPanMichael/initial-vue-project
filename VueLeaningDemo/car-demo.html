@@ -44,7 +44,7 @@
           <tr v-for="(item, index) in search()" :key="item.id">
             <td scope="row">{{item.id}}</td>
             <td v-text="item.name"></td>
-            <td>{{item.ctime}}</td>
+            <td>{{item.ctime | dataformat('yyyy-mm-dd')}}</td>
             <td>
               <a href="#" @click.prevent="deleteItem(item.id)">delete</a>
             </td>
@@ -54,6 +54,23 @@
     </article>
   </section>
   <script>
+    Vue.filter('dataformat', function(data, pattern=''){
+      const temp = new Date(data)
+
+      const yy = temp.getFullYear();
+      const MM = temp.getMonth();
+      const dd = temp.getDate();
+
+      if (pattern.toLowerCase() === 'yyyy-mm-dd') {
+        return `${yy}-${MM}-${dd}`
+      } else {
+        const hh = temp.getHours();
+        const mm = temp.getMinutes();
+        const ss = temp.getSeconds();
+        return `${yy}-${MM}-${dd} ${hh}:${mm}:${ss}`
+      }
+    })
+
     new Vue({
       el: "#root",
       data: {
@@ -107,6 +124,24 @@
           ));
         }
       },
+      filters: {
+        dataformat: function(data, pattern='') {
+          const temp = new Date(data)
+
+          const yy = temp.getFullYear();
+          const MM = (temp.getMonth() + 1).toString().padStart(2, '0');
+          const dd = temp.getDate().toString().padStart(2, '0');
+
+          if (pattern.toLowerCase() === 'yyy-mm-dd') {
+            return `${yy}-${MM}-${dd}`
+          } else {
+            const hh = temp.getHours().toString().padStart(2, '0');
+            const mm = temp.getMinutes().toString().padStart(2, '0');
+            const ss = temp.getSeconds().toString().padStart(2, '0');
+            return `${yy}-${MM}-${dd} ${hh}:${mm}:${ss}`
+          }
+        }
+      }
     })
   </script>
 </body>
