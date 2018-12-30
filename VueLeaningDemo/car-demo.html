@@ -53,6 +53,9 @@
       </table>
     </article>
   </section>
+  <section>
+    <p id="app2" v-color="'red'" v-fontweight="900" v-fontsize="'2em'">test test test test test</p>
+  </section>
   <script>
 
     Vue.directive('focus', {
@@ -65,6 +68,12 @@
       updated: function(el) {
         
       },
+    })
+
+    Vue.directive('color', {
+      bind: function(el, arg) {
+        el.style.color = arg.value;
+      }
     })
 
     Vue.filter('dataformat', function(data, pattern=''){
@@ -154,6 +163,22 @@
             const mm = temp.getMinutes().toString().padStart(2, '0');
             const ss = temp.getSeconds().toString().padStart(2, '0');
             return `${yy}-${MM}-${dd} ${hh}:${mm}:${ss}`
+          }
+        }
+      }
+    })
+
+    new Vue({
+      el: '#app2',
+      directives: {
+        fontweight: {
+          bind: function(el, arg) {
+            el.style.fontWeight = arg.value;
+          }
+        },
+        fontsize: {
+          bind: function(el, arg) {
+            el.style.fontSize = arg.value;
           }
         }
       }
