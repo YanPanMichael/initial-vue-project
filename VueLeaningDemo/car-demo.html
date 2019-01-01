@@ -54,7 +54,7 @@
     </article>
   </section>
   <section>
-    <p id="app2" v-color="'red'" v-fontweight="900" v-fontsize="'2em'">test test test test test</p>
+    <p id="app2" v-color="'red'" v-fontweight="900" v-fontsize="'2em'" v-fontstyle="'italic'">test test test test test</p>
   </section>
   <script>
 
@@ -178,8 +178,11 @@
         },
         fontsize: {
           bind: function(el, arg) {
-            el.style.fontSize = arg.value;
+            el.style.fontSize = parseInt(arg.value) + 'em';
           }
+        },
+        fontstyle: function(el, arg) { // default work in bind and update 钩子函数
+          el.style.fontStyle = arg.value
         }
       }
     })
