@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>life cycle Demo</title>
+  <script crossorigin="anonymous" src="https://lib.baomitu.com/vue/2.5.21/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <h3 id="message">{{msg}}</h3>
+      <input type="button" value="Change message" @click="msg='Changed!'">
+    </div>
+  </div>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        msg: "welcome to here! "
+      },
+      methods: {
+      },
+      beforeCreate () {
+        
+      },
+      created() {
+        
+      },
+      beforeMount() {
+        console.log(document.getElementById('message').innerHTML);
+      },
+      mounted() {
+        console.log(document.getElementById('message').innerHTML);
+      },
+      beforeUpdate() {
+        console.log('msg: '+this.msg);
+        console.log('msg: '+document.getElementById('message').innerHTML);
+      },
+      updated() {
+        console.log('msg: '+this.msg);
+        console.log('msg: '+document.getElementById('message').innerHTML);
+      },
+      beforeDestroy () {
+        
+      },
+      destroyed () {
+        
+      }
+    })
+  </script>  
+</body>
+</html>
